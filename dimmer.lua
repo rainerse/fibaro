@@ -5,12 +5,6 @@
 973 value
 %% globals 
 --]]
- 
-
-
-
-
-
 
 -- Sensor IDs, separated with commas
 local sensors = {
