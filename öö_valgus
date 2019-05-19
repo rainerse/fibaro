@@ -1,0 +1,50 @@
+--[[ 
+%% properties 
+1952 value
+98 value
+%% globals 
+--]]
+-- VARIABLEN (Bewegungsmelder muss oben unter %% properties aufgeführt sein)
+local scene = 30 -- ID dieser Szene
+local motion = 1952 -- id Bewegungssensors
+local licht = 383 -- ID Lichtsensor
+local switch = 98 -- ID des Relay Switches
+
+local lichtwert = 40 -- grenze zum nachtmodus (nur ausführen, wenn licht größer als)
+-- Lösche doppelte Szene(n)
+if (fibaro:countScenes()>1) then 
+ fibaro:abort(); 
+end
+-- SCHALTE LICHT EIN & AUS
+if (tonumber(fibaro:getValue(motion, "value")) > 0 ) and (tonumber(fibaro:getValue(switch, "value"))) < 1 and tonumber(fibaro:getValue(licht, "value")) < lichtwert then 
+ fibaro:call(switch, "turnOn");
+ fibaro:debug("Schalte Licht ein");
+end
+-- Verzögerung in Sekunden nach der letzten erkannten Bewegung, bevor das Licht ausgeschaltet wird
+if (tonumber(fibaro:getValue(switch, "value"))) > 0 then
+ local starttimer = 120;
+ local timer = (starttimer); 
+ fibaro:debug("Starte Timer");
+ 
+ repeat 
+ fibaro:sleep(1000); 
+ -- Schalte Licht aus, wenn Schalter manuell betätigt wird und warte 10 Sekunden, um ein 
+ -- versehentliches (erneutes) Aktivieren der Szene zu verhindern
+ if (tonumber(fibaro:getValue(switch, "value"))) < 1 then 
+ timer=1; 
+ fibaro:call(switch, "turnOff"); 
+ fibaro:sleep(10000); 
+ break 
+ end 
+ timer=timer-1; 
+ -- Timer zurücksetzen, wenn neue Bewegung erkannt wird innherhalb der Verzögerungszeit
+ if (tonumber(fibaro:getValue(motion, "value"))) > 0 then 
+ timer=starttimer; 
+ fibaro:debug("Resete Time, Bewegung erkannt bzw. Motionsensor sendet noch nicht (vgl. Parameter 6)");
+ end 
+ until (timer<1) 
+ -- Schalte Licht aus, wenn Timer vollständig abgelaufen ist
+ fibaro:call(switch, "turnOff");
+ fibaro:debug("Timer abgelaufen/Schalte Licht aus");
+ fibaro:killScenes(scene); 
+end
