@@ -15,7 +15,7 @@ local temperatuur_tegelik   = (tonumber(fibaro:getValue(temp_andur, "value")));
 local akna_olek             = (tonumber(fibaro:getValue(seade, "value")));
 print('<font color=lightblue> # 16 Käivitan stseeni');
 print('<font color=lightblue> # 17 Kasvuhoone temperatuur: '.. temperatuur_tegelik .. '. Akna olek: ' .. akna_olek);
-if(temperatuur_tegelik) < (temperatuur_sulgemine) then; ------------------------------------------------------------------------
+if(temperatuur_tegelik) < (temperatuur_sulgemine) then -------------------------------------------------------------------------
     print('<font color=lightblue> # 19 Temperatuur on alla ' .. temperatuur_sulgemine ..'C. Kontrollin kas aken on lahti.');  --
     if (akna_olek == 1) then -------------------------------------------------------                                          --
        print('<font color=pink> # 21 aken on lahti, panen akna kinni');           --                                          --
