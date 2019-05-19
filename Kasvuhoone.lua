@@ -1,6 +1,6 @@
 --[[
 %% properties
-2166                                     -- käivitaja seade
+2166 value                               -- käivitaja seade
 %% weather
 %% events
 %% globals
