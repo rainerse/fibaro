@@ -5,12 +5,12 @@
 %% events
 %% globals
 --]]
-local temp_andur            = 1347      --temperatuuri andur
+local temp_andur            = 1347      -- temperatuuri andur
 local seade                 = 1346      -- seade mida lülitatakse
 local temperatuur_avamine   = 30        -- avamistemperatuur
 local temperatuur_sulgemine = 20        -- sulgemistemperatuur
-local avamine               = "open"    --avamine
-local sulgemine             = "close"   --sulgemine
+local avamine               = "open"    -- avamine
+local sulgemine             = "close"   -- sulgemine
 local temperatuur_tegelik   = (tonumber(fibaro:getValue(temp_andur, "value")));
 local akna_olek             = (tonumber(fibaro:getValue(seade, "value")));
 print('<font color=lightblue> # 16 Käivitan stseeni');
