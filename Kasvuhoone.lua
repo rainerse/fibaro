@@ -5,12 +5,12 @@
 %% events
 %% globals
 --]]
-local temp_andur = 117  	--temperatuuri andur 1347 value  minu temp andur on id117
+local temp_andur = 117      --temperatuuri andur 1347 value  minu temp andur on id117
 local seade = 112           -- seade mida lülitatakse > 1346 value  minu relee on id 28
-local avamis_temp = 30		-- avamistemperatuur
-local sulgemis_temp = 20	-- sulgemistemperatuur
-local avamine = "turnOn"	-- "open"  avamine
-local sulgemine = "turnOff"	-- "close" sulgemine
+local avamis_temp = 30      -- avamistemperatuur
+local sulgemis_temp = 20    -- sulgemistemperatuur
+local avamine = "turnOn"    -- "open"  avamine
+local sulgemine = "turnOff" -- "close" sulgemine
 local temp_value = (tonumber(fibaro:getValue(temp_andur, "value")));
 local akna_olek = (tonumber(fibaro:getValue(seade, "value")));
 --local startSource = fibaro:getSourceTrigger();
