@@ -6,7 +6,7 @@
 %% globals
 --]]
 local temp_andur = 117  	--temperatuuri andur 1347 value  minu temp andur on id117
-local seade = 112 			-- seade mida lülitatakse > 1346 value  minu relee on id 28
+local seade = 112           -- seade mida lülitatakse > 1346 value  minu relee on id 28
 local avamis_temp = 30		-- avamistemperatuur
 local sulgemis_temp = 20	-- sulgemistemperatuur
 local avamine = "turnOn"	-- "open"  avamine
